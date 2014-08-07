@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
 
 android {
     // NDK r10 does not provide android-20 directory, so you need to symlink it to android-19 for now.
@@ -44,6 +50,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.android.support:wearable:+'
+    compile(name:'wearable-support-1.0', ext:'aar')
+    compile "com.android.support:support-v4:20.0.+"
+    compile "com.android.support:support-v13:20.0.+"
     compile 'com.google.android.gms:play-services-wearable:+'
 }
